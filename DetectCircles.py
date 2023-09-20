@@ -41,7 +41,7 @@ cropped_path = "cropped"
 imgList = []
 imgl=os.listdir(original_path)
 for img in imgl:
-    if img.endswith(".jpg"):
+    if img.endswith(".jpg") and "_" in img:
         imgList.append(img)
         cropped_circle(img,original_path,cropped_path)
 
