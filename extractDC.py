@@ -17,7 +17,7 @@ def pack(v):
 def unpack(v):
     return pickle.loads(base64.b64decode(zlib.decompress(v)))
 
-fpath="SizeChanged"
+fpath="LED"
 imgl=os.listdir(fpath)
 out_path="DCresults"
 
@@ -35,6 +35,6 @@ for img in imgl:
         result[img]=dc
         print(img)
 
-with open("result.txt","wb") as f:
+with open("results","wb") as f:
     f.write(pack(result))
 
