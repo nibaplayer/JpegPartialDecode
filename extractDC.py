@@ -17,9 +17,9 @@ def pack(v):
 def unpack(v):
     return pickle.loads(base64.b64decode(zlib.decompress(v)))
 
-fpath="LED"
+fpath="cropped"
 imgl=os.listdir(fpath)
-out_path="DCresults"
+# out_path="DCresults"
 
 def getDC(file):
     with open(file,"rb") as f:
@@ -30,11 +30,11 @@ def getDC(file):
         return jpg.DC
 result={}
 for img in imgl:
-    if img.endswith(".jpg"):
+    if img.endswith(".jpg") and "Green" in img:
         dc=getDC(os.path.join(fpath,img))
         result[img]=dc
         print(img)
 
-with open("results","wb") as f:
+with open("Button_results","wb") as f:
     f.write(pack(result))
 

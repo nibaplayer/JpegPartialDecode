@@ -13,8 +13,8 @@ def resize(file,new_name,input_d,output_d,target_width,target_height):
     resized_image.save(f"{output_d}\\{new_name}")
 
 
-size_changed_path = "buttons"
-cropped_path = "buttons"
+input_d = "buttons"
+output_d = "cropped"
 # imgl=os.listdir(cropped_path)
 # i,j=1,0
 # for img in imgl:
@@ -30,4 +30,13 @@ cropped_path = "buttons"
 #         resize(img,new_name,cropped_path,size_changed_path,120,120)
 #         j+=1
 
-resize("GreenOff_0.jpg","test_0.jpg",size_changed_path,size_changed_path,120,120)
+# resize("GreenOff_0.jpg","test_0.jpg",size_changed_path,size_changed_path,120,120)
+imgl = os.listdir(input_d)
+for img in imgl:
+    if img.endswith(".jpg") and "On" in img:
+        image = Image.open(os.path.join(input_d,img))
+        print(img,image.size)
+        crop_area = (0,15,100,115)
+        cropped_image = image.crop(crop_area)
+        resized_image = cropped_image.resize((120,120))
+        resized_image.save(os.path.join(output_d,img))
