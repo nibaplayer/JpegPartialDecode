@@ -36,13 +36,18 @@ def cropped_circle(file,o,c):
             # cv2.waitKey(0)
             # cv2.destroyAllWindows()
 
-original_path = "original"
-cropped_path = "cropped"
+input_path = "dataset"
+output_path = "test"
 imgList = []
-imgl=os.listdir(original_path)
-for img in imgl:
-    if img.endswith(".jpg") and "_" in img:
-        imgList.append(img)
-        cropped_circle(img,original_path,cropped_path)
+imgl=os.listdir(input_path)
+
+cropped_circle("IMG_5328.jpeg",input_path,output_path)
+
+
+# for img in imgl:
+#     if img.endswith(".jpg")  in img:
+        
+#         imgList.append(img)
+#         cropped_circle(img,input_path,output_path)
 
 
